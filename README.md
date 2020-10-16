@@ -53,3 +53,4 @@
 - Após concluir a codificação, limpe o código, não se contente vê-lo apenas funcionando.
 - Forma mais sutil de duplicação de código, são algoritimos parecidos, adote o pattern template method para eliminar esse comportamento.
 - Exilar corretamente as abstrações, ou seja: conceitos mais genéricos ou de alto nivel em classes bases, conceitos mais específicos em subclasses ou classes concretas. Organize o projeto, separando as classes bases das subclasses em pacotes diferentes.
+- Devem-se declarar variáveis e funções, próximas aonde são usadas.
