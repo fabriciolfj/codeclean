@@ -1,1 +1,24 @@
-# codeclean
+# Dicas para um código limpo
+
+- Cria-se métodos pequenos
+- O nome dos métodos, deve refletir o que ele faz.
+- O método deve validar, criar ou consultar, nunca mais de 1 processo junto.
+- O método deve possuir  no máximo 3 parâmetros.
+- O método deve fazer apenas uma coisa, uma abstração, um propósito.
+- Não use parâmetros de saída.
+- No código catch, apenas trate a exceção.
+- Nunca duplique código.
+- Objetos usam abstrações para esconder seus dados ou funções, estratura de dados expões seus dados e não possuem funções.
+- Um módulo não deve enxergar o interior dos objetos que manipula.
+- Evite cadeia de chamadas, tipo: get().get().
+- Nunca retorne null.
+- Nunca passe como parâmetro um Optional.
+- Nunca passe null como parâmetro.
+- Não tenha vários catchs.
+- Ao usar libs de terceiros, encapsule em uma classe.
+- Use o código que não existe, exemplo: caso precise de uma api, que não existe naquele momento, desenvolva uma interface que expôes métodos que você precise e implemente uma classe fake. Quando o código original estiver pronto, desenvolva um adapter.
+- Não devemos enxergar como o código de terceiro funcione, no caso de dependências, e não mistrar o código deste com o nosso.
+- Os testes devem ser claros
+- Os testes devem pertencer a um domínio.
+- Testes devem ser óbivos, sucintos.
+- O idetal que cada teste tenha apenas um assert.
