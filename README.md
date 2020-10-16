@@ -35,3 +35,19 @@
 - Separe a lógica de negócio de frameworks.
 - Modular os domínios, ou seja, separe em pacotes.
 - Não adote uma arquitetura invasiva, ou seja, que polua seu domínio com frameworks.
+- No seu dominio, use pojos, ou seja, java puro.
+- Efetue testes, o alto acoplamento dificulta os testes.
+- Não duplique o código.
+- Expresse o propósito no codigo.
+- Coloque como sufixos os nomes dos padrões nas classes que os usam.
+- Código voltado para concorrência, deve ficar separado do código não concorrente.
+- Limite severamente o acesso a quaisquer dados que possam ser compartilhados, em um código concorrente.
+- Faça cópia dos dados em uma aplicação concorrente.
+- Em métodos assincronos, opte por variáveis locais.
+- Não tenha mais de um método synchronized, dentro da mesma classe.
+- Evite usar mais de um método em um objeto compartilhado.
+- Não ignore falhas de sistemas, como se fossem isolados.
+- Antes de adotar threads, certifique que seu código funciona sem elas.
+- Evite chamar uma seção assincrona a outra sincrona.
+- Se uma classe possui muitos tipos diferentes e métodos auxiliares, considere criar outra classe.
+- Após concluir a codificação, limpe o código, não se contente vê-lo apenas funcionando.
