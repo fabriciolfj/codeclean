@@ -51,3 +51,4 @@
 - Evite chamar uma seção assincrona a outra sincrona.
 - Se uma classe possui muitos tipos diferentes e métodos auxiliares, considere criar outra classe.
 - Após concluir a codificação, limpe o código, não se contente vê-lo apenas funcionando.
+- Forma mais sutil de duplicação de código, são algoritimos parecidos, adote o pattern template method para eliminar esse comportamento.
