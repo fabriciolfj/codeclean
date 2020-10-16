@@ -22,3 +22,16 @@
 - Os testes devem pertencer a um domínio.
 - Testes devem ser óbivos, sucintos.
 - O idetal que cada teste tenha apenas um assert.
+- As classes devem ser pequenas e ter 1 responsabilidade.
+- As classes devem ter apenas um motivo para mudar.
+- Classes devem possuir um pequeno número de variáveis de instância.
+- Métodos que usam todas as variáveis de instância, são mais coesos.
+- Quando tenho métodos que usam algumas variávies de instância, crie outra classe para os mesmos.
+- Use o princípio do aberto e fechado.
+- Um sistema evolui com expansão e não com alteração de código existente.
+- Use o principio de inversão de dependência, ou seja, dependa de abstrações.
+- Deixe o sistema mais desacoplado possível, ele será mais flexivel para testes e reutilização de código.
+- Separe a criação de objetos da lógica do seu sistema. Use o pattern abstract factory.
+- Separe a lógica de negócio de frameworks.
+- Modular os domínios, ou seja, separe em pacotes.
+- Não adote uma arquitetura invasiva, ou seja, que polua seu domínio com frameworks.
