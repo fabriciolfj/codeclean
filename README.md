@@ -71,3 +71,21 @@ public class CalculaHoras {
 - Evite o uso de parâmetros seletores, ou seja, boolean e anums, pois eles selecionam comportamentos dentro da minha função.
 - Evite classes statics, caso adote, garanta que no futuro não mude o comportamento da mesma para polifórmica.
 - Torne dependência lógica em físicas, ou seja, se depende de outro objeto, não assume responsabilidade que pertença a tal.
+- Os métodos devem fazer 1 coisa só.
+- Encapsule condicionais, exemplo:
+```
+Prefira isso
+if(isValido())
+
+em vez disso
+if (i >0 && i < 9) -- coloquei no método isValid
+
+public boolean isValid() {
+  return i > 0 && 0 < 9;
+}
+```
+- Evite condicionais negativas.Exemplo 
+```
+if(!isValid())
+```
+- Deixe claro os acoplamentos temporários, exemplo: ordem de chamadas de funções para realizar algum procedimento.
