@@ -69,3 +69,5 @@ public class CalculaHoras {
 }
 ```
 - Evite o uso de parâmetros seletores, ou seja, boolean e anums, pois eles selecionam comportamentos dentro da minha função.
+- Evite classes statics, caso adote, garanta que no futuro não mude o comportamento da mesma para polifórmica.
+- Torne dependência lógica em físicas, ou seja, se depende de outro objeto, não assume responsabilidade que pertença a tal.
