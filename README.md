@@ -101,3 +101,28 @@ public Cliente getCliente() {
     return new Cliente()
 } esse método faz mais do que buscar o primeiro cliente, se não existir ele cria. O nome correto seria returnFirstOrCreateCliente
 ```
+
+### Josua
+- Em vez de retornar uma lista nula, retorne uma lista vazia.
+- Valide os parâmetros logo na entrada.
+- Métodos com mais de 3 parâmetros, considere passar um tipo que os represente.
+- Em vez de passar um boolean, considere um enum como parâmetro.
+- Declare com final as variáveis e parâmetros.
+- De preferência a referência de métodos, em vez de lambda.
+- Use as interfaces funcionais padrões.
+- Cuidado ao uso de stream parallel.
+- Não use sobrecarga com os mesmos números de parâmetros.
+- Cuidado no uso de sequência de parâmetros de mesmo tipo.
+- De preferência a composição em vez da herança.
+- Quando precisar fechar alguma conexão, uso o try-with-resources.
+- Use interface para definir tipos.
+- De preferência a interfaces em vez de classes abstratas.
+- Caso você não garante o retorno do objeto, use o return Optional.empty().
+- Não retorne um primitivo optional, uso por exemplo OptionalInt.
+- Não use optionals com maps, chaves ou indices de arrays.
+- Cuidado no uso do optional, por questão de desempenho.
+- Declare a variável local onde a mesma será utilizada.
+- Todas as variáveis locais devem ser inicializadas.
+- De preferência ao foreach em vez do for tradicional.
+- Use o bigdeciaml para valores monetarios.
+- De preferência a tipos primitivos em vez de empacotados.
