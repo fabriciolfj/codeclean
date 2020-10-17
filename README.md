@@ -56,3 +56,15 @@
 - Devem-se declarar variáveis e funções, próximas aonde são usadas.
 - Mantenha a consistência, ou seja, se adotar uma abordagem mantenha, exemplo: varaivel de retorno a uma chamada de api, chama-se responsePessoa, em outros pontos muda o sufixo mas mantenha-se o response, como responseProduto.
 - Codigo morto, nunca utilizado, apague.
+- Repense pontos onde métodos alteram dados, de outro objeto que ele está incluso. Exemplo:
+```
+public class CalculaHoras {
+
+  public Valor calcular(Funcionario funcionario) {
+    var horas = funcionario.getPonto().getHoras(); //não preciso saber do ponto exato que vem as horas
+    var total = horas * 0.5; //esse método poderia estar dentro da classe funcionario.
+  
+  }
+
+}
+```
