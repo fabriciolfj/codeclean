@@ -90,3 +90,4 @@ if(!isValid())
 ```
 - Deixe claro os acoplamentos temporários, exemplo: ordem de chamadas de funções para realizar algum procedimento.
 - Separe os níveis de abstração.
+- Escolha nomes no nível apropriado de abstração.
