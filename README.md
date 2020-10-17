@@ -92,3 +92,12 @@ if(!isValid())
 - Separe os níveis de abstração.
 - Escolha nomes no nível apropriado de abstração.
 - Use uma nomenclatura padrão aonde for possível.
+- O nome da função deve descrever o que ela realmente faz, por exemplo:
+```
+public Cliente getCliente() {
+  var cliente = findyFirst();
+  
+  if (cliente == null) 
+    return new Cliente()
+} esse método faz mais do que buscar o primeiro cliente, se não existir ele cria. O nome correto seria returnFirstOrCreateCliente
+```
