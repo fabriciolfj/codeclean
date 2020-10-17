@@ -68,3 +68,4 @@ public class CalculaHoras {
 
 }
 ```
+- Evite o uso de parâmetros seletores, ou seja, boolean e anums, pois eles selecionam comportamentos dentro da minha função.
