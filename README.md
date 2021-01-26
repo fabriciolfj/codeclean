@@ -126,3 +126,9 @@ public Cliente getCliente() {
 - De preferência ao foreach em vez do for tradicional.
 - Use o bigdeciaml para valores monetarios.
 - De preferência a tipos primitivos em vez de empacotados.
+
+### Arquitetura clean
+- Orientação a objeto: é a habilidade de obter controle absoluto, através do uso do polimorfismo, sobre cada depência de código fonte do sistema.
+
+#### SOLID
+ - SRP : um módulo deve ter uma, e apenas uma razão para mudar (ou pertencer a um ator).
