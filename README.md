@@ -134,3 +134,7 @@ public Cliente getCliente() {
  - SRP : um módulo deve ter uma, e apenas uma razão para mudar (ou pertencer a um ator).
  - OCP : objetivo do sistema ser facil de estender, sem que a mudança gere alto impacto. Para concretizar esse objetivo, particionamos o sistema em compoenentes e organizamos esses componentes em uma hierarquia de dependência que proteja os camponentes de nivel mais alto das mudanças em componentes de nivel mais baixo: Por exemplo: quero proteger o compoente A do componentes B, componente B deve depender do componente A para isso.
  - LSP (substituição de liskov) : capacidade de substituir as entidades filhas pelas pais, para usso usamos interfaces e heranças (polimorfismo).
+
+#### Diferença entre regras de dominio e regras da aplicação
+- Regras de dominio, são regras que dificilmente mudam, e devem existir sem a aplicação (como por exemplo, calcular juros sobre um emprestimo).
+- Regras da aplicação, encontradas no caso de uso, são regras que automatizam o dominio, e podem mudar com mais frequencia (forma de buscar contato de quem solicitou emprestimo).
