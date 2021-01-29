@@ -145,3 +145,4 @@ public Cliente getCliente() {
 - componente estável: quando ele nao depende de ninguem e outros componentes depende dele (independente e responsável)
 - componente instável: quando ele depende de outros, dependencia acima do numero dos que depende dele), dependente e irresponsável.
 - Evite componente estável depender de componente instável, caso necessite, use DIP (inversão de dependencias).
+- Utilize métricas: nivel de abstração e nivel de estabilidade do seu componente.
