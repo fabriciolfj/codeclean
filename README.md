@@ -140,3 +140,8 @@ public Cliente getCliente() {
 #### Diferença entre regras de dominio e regras da aplicação
 - Regras de dominio, são regras que dificilmente mudam, e devem existir sem a aplicação (como por exemplo, calcular juros sobre um emprestimo).
 - Regras da aplicação, encontradas no caso de uso, são regras que automatizam o dominio, e podem mudar com mais frequencia (forma de buscar contato de quem solicitou emprestimo).
+
+#### Componentes
+- componente estável: quando ele nao depende de ninguem e outros componentes depende dele (independente e responsável)
+- componente instável: quando ele depende de outros, dependencia acima do numero dos que depende dele), dependente e irresponsável.
+- Evite componente estável depender de componente instável, caso necessite, use DIP (inversão de dependencias).
