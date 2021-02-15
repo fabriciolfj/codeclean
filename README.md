@@ -171,3 +171,15 @@ public Cliente getCliente() {
     - Deparar camadas que mudam por propósitos diferentes, exemplo: validação de entrada da aplicação, pertence a app, regras de juros pertence ao domínio.
   - Desacoplando casos de uso
     - Casos de usos diferentes, mudam em um ritmo e por razões diferentes.
+    
+- Sugestão separação por casos de uso:
+  - criarpedido
+    - repositorio
+    - service 
+    - domain
+    - ui
+  - apagarpedido
+    - repositorio
+    - service
+    - domain
+    - ui
