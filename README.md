@@ -155,6 +155,14 @@ public Cliente getCliente() {
 - Objetivo do arquiteto é criar uma forma para o sistema que reconheça a política como elemento essencial e torne os detalhes irrelevantes para essa política.
 - Uma boa arquitetura deve suportar:
   - casos de uso e operação do sistema
+    - deixe claro no sistema os pontos mais importantes
   - manutenção do sistema
+    - que não seja custosa e agilidade na detecção dos problemas
+  - operação:
+    -  que facilita a escalabilidade da aplicação por exemplo.
   - desenvolvimento do sistema
+    - facilite a evolução do sistema
+    - uma escrutura que facilite diversas equipes trabalhar
   - implantação do sistema.
+    - facilitar a implantação do sistema
+    - após o build da app, ela ja é implantada, sem necessidade de scripts ou diretórios executados manualmente.
