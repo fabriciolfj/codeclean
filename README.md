@@ -166,3 +166,8 @@ public Cliente getCliente() {
   - implantação do sistema.
     - facilitar a implantação do sistema
     - após o build da app, ela ja é implantada, sem necessidade de scripts ou diretórios executados manualmente.
+  - Deixe as opções abertas
+  - Desacoplando camadas
+    - Deparar camadas que mudam por propósitos diferentes, exemplo: validação de entrada da aplicação, pertence a app, regras de juros pertence ao domínio.
+  - Desacoplando casos de uso
+    - Casos de usos diferentes, mudam em um ritmo e por razões diferentes.
