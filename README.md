@@ -171,6 +171,7 @@ public Cliente getCliente() {
     - Deparar camadas que mudam por propósitos diferentes, exemplo: validação de entrada da aplicação, pertence a app, regras de juros pertence ao domínio.
   - Desacoplando casos de uso
     - Casos de usos diferentes, mudam em um ritmo e por razões diferentes.
+  - Duplicação real vs duplicação acidental: real, constatado código duplicado no mesmo serviço. acidental: código parecidos em servidos diferentes(não unifique).
     
 - Sugestão separação por casos de uso:
   - criarpedido
