@@ -146,3 +146,15 @@ public Cliente getCliente() {
 - componente instável: quando ele depende de outros, dependencia acima do numero dos que depende dele), dependente e irresponsável.
 - Evite componente estável depender de componente instável, caso necessite, use DIP (inversão de dependencias).
 - Utilize métricas: nivel de abstração e nivel de estabilidade do seu componente.
+
+#### Arquitetura
+- Para um bom arquiteto, deve deixar os detalhes mais abertos possíveis, pois eles não importam.
+- Todos os sistemas de software podem ser decompostos em dois elementos principais: politica e detalhes.
+- Política: engloba todas as regras e procedimentos de negócios, onde está o verdadeiro valor do sistema.
+- Detalhes: itens necessários, como servidores, banco de dados, protocolo de comunicação e etc.
+- Objetivo do arquiteto é criar uma forma para o sistema que reconheça a política como elemento essencial e torne os detalhes irrelevantes para essa política.
+- Uma boa arquitetura deve suportar:
+  - casos de uso e operação do sistema
+  - manutenção do sistema
+  - desenvolvimento do sistema
+  - implantação do sistema.
