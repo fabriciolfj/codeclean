@@ -184,3 +184,7 @@ public Cliente getCliente() {
     - service
     - domain
     - ui
+
+#### Separação de fronteiras
+- Estabelecer limites entre os componeentes de software, onde um não conheça os detalhes do outro.
+- Estabeleça limite entree regras de negócio e detalhes do software.
