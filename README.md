@@ -188,3 +188,4 @@ public Cliente getCliente() {
 #### Separação de fronteiras
 - Estabelecer limites entre os componeentes de software, onde um não conheça os detalhes do outro.
 - Estabeleça limite entree regras de negócio e detalhes do software.
+- Estabelaça limites entre coisas que importam e não importam. Ex: GUI não importa para as regras de negócio, então deve haver um limite entre eles.
