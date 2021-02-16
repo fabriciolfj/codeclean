@@ -189,3 +189,5 @@ public Cliente getCliente() {
 - Estabelecer limites entre os componeentes de software, onde um não conheça os detalhes do outro.
 - Estabeleça limite entree regras de negócio e detalhes do software.
 - Estabelaça limites entre coisas que importam e não importam. Ex: GUI não importa para as regras de negócio, então deve haver um limite entre eles.
+- Exemplo: não queremos que as regras de negócio sejam quebradas quando alguem mudar o formato de uma pagina web ou esquema do banco de dados.
+- Os componentes de um lado do limite mudam em ritmos diferentes e por razões diferentes quando comparados aos componentes do outro lado do limite.
