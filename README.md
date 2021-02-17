@@ -192,3 +192,7 @@ public Cliente getCliente() {
 - Exemplo: não queremos que as regras de negócio sejam quebradas quando alguem mudar o formato de uma pagina web ou esquema do banco de dados.
 - Os componentes de um lado do limite mudam em ritmos diferentes e por razões diferentes quando comparados aos componentes do outro lado do limite.
 - Para estabelecer limites em uma arquitetura de software, primeiro particione o sistema em componentes. Alguns desses componentes são regras centrais de negócio; outros são plug-ins que contêm funções necessárias, mas sem relação direta com o negócio central. Em seguida, organize o código desses componentes para que as flechas entre eles aponte em uma única direção - na direção do negócio central.
+
+# Aplicação com baixo acoplamento
+- onde há facilidade de trocar as implementações, sem muita dificuldade
+- dica: dependa de abstrações (SOLID).
