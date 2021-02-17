@@ -195,4 +195,5 @@ public Cliente getCliente() {
 
 # Aplicação com baixo acoplamento
 - onde há facilidade de trocar as implementações, sem muita dificuldade
+- Deixe as regras de negócio, apartadas de frameworks.
 - dica: dependa de abstrações (SOLID).
