@@ -200,3 +200,6 @@ public Cliente getCliente() {
 
 # Niveis
 - Componentes de níveis mais altos, aqueles que se encontram longe das entrada e saidas da minha aplicação, devem ser desacoplados de componentes de níveis mais baixos (mais próximos da entrada e saida da minha aplicação).
+
+# Baseada em plugins
+- Como os componentes de alto nível não dependente dos componentes de baixo nivel, estes podem ser substituidos tranquilamente.
