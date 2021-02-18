@@ -197,3 +197,6 @@ public Cliente getCliente() {
 - onde há facilidade de trocar as implementações, sem muita dificuldade
 - Deixe as regras de negócio, apartadas de frameworks.
 - dica: dependa de abstrações (SOLID).
+
+# Niveis
+- Componentes de níveis mais altos, aqueles que se encontram longe das entrada e saidas da minha aplicação, devem ser desacoplados de componentes de níveis mais baixos (mais próximos da entrada e saida da minha aplicação).
