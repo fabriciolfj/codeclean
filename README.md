@@ -203,3 +203,25 @@ public Cliente getCliente() {
 
 # Baseada em plugins
 - Como os componentes de alto nível não dependente dos componentes de baixo nivel, estes podem ser substituidos tranquilamente.
+
+# Regras de negócio
+### Entidades
+- São regras e dados cruciais do negócio.
+- São classes de alto nível, ou seja, estão mais longes das entradas e saidas.
+- Não pode ter nenhuma dependência de framework.
+- Contem elementos do negócio, ou seja, representa o negócio.
+
+### Casos de uso
+- São regras específicas da aplicação.
+- Usam as entidades
+- Podem possuir varias classes ou funções
+- Especifica a entrada e a saida dos dados, e estes não são as entidades ok.
+- Não descreve como o sistema aparece para o usuario, e sim as regras da aplicação que regem sobre a interação entre usuarios e entidades, o modo como os dados entram e saem do sistema é irrelevante.
+- As entidades não conhecem os casos de uso
+- Não pode ter nenhuma dependência de framework.
+
+### Modelos de requisição e resposta
+- São entradas e saidas do caso de uso
+- Esses modelos não devem possuir nenhuma conhecimento, como os dados são enviados ou demonstrados ao usuário.
+- Não pode depender de nenhum framwork.
+- São classes simples
