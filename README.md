@@ -153,6 +153,7 @@ public Cliente getCliente() {
 - Política: engloba todas as regras e procedimentos de negócios, onde está o verdadeiro valor do sistema.
 - Detalhes: itens necessários, como servidores, banco de dados, protocolo de comunicação e etc.
 - Objetivo do arquiteto é criar uma forma para o sistema que reconheça a política como elemento essencial e torne os detalhes irrelevantes para essa política.
+- Uma boa arquitetura, deve demonstrar qual negócio o sistema gerencia, por exemplo: sistema de rh, sistema de farmácia e etc, e não quais frameworks utiliza.
 - Uma boa arquitetura deve suportar:
   - casos de uso e operação do sistema
     - deixe claro no sistema os pontos mais importantes
