@@ -226,3 +226,6 @@ public Cliente getCliente() {
 - Esses modelos não devem possuir nenhuma conhecimento, como os dados são enviados ou demonstrados ao usuário.
 - Não pode depender de nenhum framwork.
 - São classes simples
+
+### Adaptadores de interface
+- São portas de entrada e saida do core da minha aplicação.
