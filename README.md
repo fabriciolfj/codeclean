@@ -229,3 +229,8 @@ public Cliente getCliente() {
 
 ### Adaptadores de interface
 - São portas de entrada e saida do core da minha aplicação.
+
+### Camadas e limites
+- Dividindo o sistema em fluxos
+- componentes de alto nível ter dependencia de abstrações
+- tomar cuidado com limites da arquitetura, ou seja, pontos onde não há como o sistema dar opções de implementação. Exemplo: deixar regras de interpretação dos dados em um ui web, em vez de abstrair essa interpretação, onde uma pagina web ou representação para mobile pode implementa-la.
