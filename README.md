@@ -133,7 +133,7 @@ public Cliente getCliente() {
 #### SOLID
  - SRP : um módulo deve ter uma, e apenas uma razão para mudar (ou pertencer a um ator).
  - OCP : objetivo do sistema ser facil de estender, sem que a mudança gere alto impacto. Para concretizar esse objetivo, particionamos o sistema em compoenentes e organizamos esses componentes em uma hierarquia de dependência que proteja os camponentes de nivel mais alto das mudanças em componentes de nivel mais baixo: Por exemplo: quero proteger o compoente A do componentes B, componente B deve depender do componente A para isso.
- - LSP (substituição de liskov) : capacidade de substituir as entidades filhas pelas pais, para usso usamos interfaces e heranças (polimorfismo).
+ - LSP (substituição de liskov) : capacidade de substituir as entidades filhas pelas pais, para usamos interfaces e heranças (polimorfismo).
  - ISP (segregação de interfaces) : é prejudicial depender de módulos que contenham mais elementos que voce precisa, dependa apenas daquilo que você necessita e separe-as em interfaces.
  - DIP (inversão de dependência): dependa de abstrações e não de implementações, utiliza-se o pattern obstract factory.
 
@@ -169,10 +169,10 @@ public Cliente getCliente() {
     - após o build da app, ela ja é implantada, sem necessidade de scripts ou diretórios executados manualmente.
   - Deixe as opções abertas
   - Desacoplando camadas
-    - Deparar camadas que mudam por propósitos diferentes, exemplo: validação de entrada da aplicação, pertence a app, regras de juros pertence ao domínio.
+    - Separar camadas que mudam por propósitos diferentes, exemplo: validação de entrada da aplicação, pertence a app, regras de juros pertence ao domínio.
   - Desacoplando casos de uso
     - Casos de usos diferentes, mudam em um ritmo e por razões diferentes.
-  - Duplicação real vs duplicação acidental: real, constatado código duplicado no mesmo serviço. acidental: código parecidos em servidos diferentes(não unifique).
+  - Duplicação real vs duplicação acidental: real, constatado código duplicado no mesmo serviço. acidental: código parecidos em serviços diferentes(não unifique).
     
 - Sugestão separação por casos de uso:
   - criarpedido
@@ -190,7 +190,7 @@ public Cliente getCliente() {
 
 #### Separação de fronteiras
 - Estabelecer limites entre os componeentes de software, onde um não conheça os detalhes do outro.
-- Estabeleça limite entree regras de negócio e detalhes do software.
+- Estabeleça limite entre regras de negócio e detalhes do software.
 - Estabelaça limites entre coisas que importam e não importam. Ex: GUI não importa para as regras de negócio, então deve haver um limite entre eles.
 - Exemplo: não queremos que as regras de negócio sejam quebradas quando alguem mudar o formato de uma pagina web ou esquema do banco de dados.
 - Os componentes de um lado do limite mudam em ritmos diferentes e por razões diferentes quando comparados aos componentes do outro lado do limite.
@@ -219,7 +219,7 @@ public Cliente getCliente() {
 - Usam as entidades
 - Podem possuir varias classes ou funções
 - Especifica a entrada e a saida dos dados, e estes não são as entidades ok.
-- Não descreve como o sistema aparece para o usuario, e sim as regras da aplicação que regem sobre a interação entre usuarios e entidades, o modo como os dados entram e saem do sistema é irrelevante.
+- Não descreve como o sistema aparece para o usuario, e sim as regras da aplicação que regem sobre a interação entre usuários e entidades, o modo como os dados entram e saem do sistema é irrelevante.
 - As entidades não conhecem os casos de uso
 - Não pode ter nenhuma dependência de framework.
 
