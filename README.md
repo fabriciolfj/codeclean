@@ -8,7 +8,7 @@
 - Não use parâmetros de saída.
 - No código catch, apenas trate a exceção.
 - Nunca duplique código.
-- Objetos usam abstrações para esconder seus dados ou funções, estratura de dados expões seus dados e não possuem funções.
+- Objetos usam abstrações para esconder seus dados ou funções, estrutura de dados expõs seus dados e não possuem funções.
 - Um módulo não deve enxergar o interior dos objetos que manipula.
 - Evite cadeia de chamadas, tipo: get().get().
 - Nunca retorne null.
