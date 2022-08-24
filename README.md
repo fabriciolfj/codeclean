@@ -225,8 +225,8 @@ public Cliente getCliente() {
 
 ### Modelos de requisição e resposta
 - São entradas e saidas do caso de uso
-- Esses modelos não devem possuir nenhuma conhecimento, como os dados são enviados ou demonstrados ao usuário.
-- Não pode depender de nenhum framwork.
+- Esses modelos não devem possuir nenhum conhecimento, como os dados são enviados ou demonstrados ao usuário.
+- Não pode depender de nenhum framework.
 - São classes simples
 
 ### Adaptadores de interface
