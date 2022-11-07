@@ -1,6 +1,8 @@
 # Dicas para um código limpo
 
 - Cria-se métodos pequenos
+- utilize sobrecarga para evitar parametros nulos
+- valide os parametros de metodos publicos
 - O nome dos métodos, deve refletir o que ele faz.
 - O método deve validar, criar ou consultar, nunca mais de 1 processo junto.
 - O método deve possuir  no máximo 3 parâmetros.
