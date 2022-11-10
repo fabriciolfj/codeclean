@@ -250,8 +250,30 @@ public Cliente getCliente() {
 - a principal característica da arquitetura de microserviços é a decomposição ou aplicações com um ou poucas funcionalidades.
 - muitas vezes migradas de um sistema monolito, essa arquitetura proporciona maior velocidade na evolução dos domínios de cada microservice.
 - o tamanho do microservice é relativo e depende da situação, quando mais fina a granularidade, maior será minha malha de microservices.
-- diante desse cenário surge novos desafios e necessidades e novos componentes, como:
-  - gateway: um cliente não precisa conhecer o host específico do microservice para acessá-lo, para isso a porta de entrada da nossa malha é um gateway, diante configuração, redirecionará a requisição ao microservice de destino.
-  - service descovery: um servidor que demonstra como está a saúde de nossos microservices, dando a eles um nome (dns), que pode ser utilizado na comunicação entre os microservices.
-  - loadbalance: uma caracteristica dos microservices é que eles não podem guardar estado transacional, pois são construídos para serem desligados ou replicados, um loadbalance faria o papel de distribuição de carga, quando existirem várias instancias dos nosso microservices.
-  - configuração externalizada: o microservice é agnóstico ao ambiente, dessa forma deve funcionar igualmente em dev, hom e prod. Respeitando as configurações de cara ambiente inserido. Existem algumas soluções como: configmap do k8s, parameter store da aws, spring config entre outros.
+- diante desse cenário surge novos desafios, necessidades e novos componentes, como:
+
+#### gateway
+- um cliente não precisa conhecer o host específico do microservice para acessá-lo, para isso a porta de entrada da nossa malha é um gateway, diante configuração, redirecionará a requisição ao microservice de destino.
+#### service descovery
+- um servidor que demonstra como está a saúde de nossos microservices, dando a eles um nome (dns), que pode ser utilizado na comunicação entre os microservices.
+
+#### loadbalance
+- uma caracteristica dos microservices é que eles não podem guardar estado transacional, pois são construídos para serem desligados ou replicados, um loadbalance faria o papel de distribuição de carga, quando existirem várias instancias dos nossos microservices.
+
+#### configuração externalizada
+- o microservice é agnóstico ao ambiente, dessa forma deve funcionar igualmente em dev, hom e prod, respeitando as configurações de cara ambiente inserido. Existem algumas soluções como: configmap do k8s, parameter store da aws, spring config entre outros que nos ajudam nesse ponto.
+
+#### Containers
+- são maquindas isoladas que compartilham mesmo kernel, onde nossos microservices podem ser executados.
+- são geradas imagens das nossas aplicações e quando as executam transformam em containers.
+
+### Resiliência
+- em uma falha de microservice, caso um dependa do resultado do processamento de outro, uma falha não pode derrubar nossa arquitetura
+- o microservice deve ser resiliente, para isso existem alguns patterns que nos ajudam, como:
+  - fallback: resposta alternativa a uma falha
+  - circuitbreaker: quando aberto falha rapidamente ou emite uma reposta de fallback, quando fechado segui o procedimento padrão. Ele é aberto diante a falha específica e número de ocorrências.
+  - retry: diante a falha, o microservice que depende da resposta do microservice com erro, repedi em um intervalo de tempo a requisição, com a esperança de receber o resultado com sucesso.
+- bulkhead : limitar o número de requisições simultaneas ao microserice.
+
+#### Observabilidade
+- como temos várias aplicações, devemos agregar os logs, ter um trace das transações (operação em uma unidade lógica), verificar a saúde, consumo de memória, cpu e etc (podemos utilizar o istio caso nossas apps estejam no k8s).
