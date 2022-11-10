@@ -279,5 +279,12 @@ public Cliente getCliente() {
 - como temos várias aplicações, devemos agregar os logs, ter um trace das transações (operação em uma unidade lógica), verificar a saúde, consumo de memória, cpu e etc (podemos utilizar o istio caso nossas apps estejam no k8s).
 
 # ACID
+- atomica: a transação somente é finalizada quando completada ou será revertida
+- consistência: a transação muda o estado, caso seja revertida, volta o estado anterior
+- isolada: uma transação não afeta a outra
+- durabilidade: podemos ver as informações em todos os nós, após a confirmação da transação, mesmo após o reinicio dos nós.
 
 # TEOREMA CAP
+- consistëncia: os clientes veêm as mesmas informações em todos os nós
+- disponibilidade: veremos as informações mesmo que algum nó esteja fora
+- tolerância de partição: o cluster continua funcionando, mesmo se ocorrer uma ou mais falhas entre os nós no sistema.
