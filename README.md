@@ -245,3 +245,13 @@ public Cliente getCliente() {
 - estrutura e design do código
 - suporte aos requisitos de negócio
 - simplificar evoluções no software
+
+# Arquiterua de microserviços
+- a principal característica da arquitetura de microserviços é a decomposição ou aplicações com um ou poucas funcionalidades.
+- muitas vezes migradas de um sistema monolito, essa arquitetura proporciona maior velocidade na evolução dos domínios de cada microservice.
+- o tamanho do microservice é relativo e depende da situação, quando mais fina a granularidade, maior será minha malha de microservices.
+- diante desse cenário surge novos desafios e necessidades e novos componentes, como:
+  - gateway: um cliente não precisa conhecer o host específico do microservice para acessá-lo, para isso a porta de entrada da nossa malha é um gateway, diante configuração, redirecionará a requisição ao microservice de destino.
+  - service descovery: um servidor que demonstra como está a saúde de nossos microservices, dando a eles um nome (dns), que pode ser utilizado na comunicação entre os microservices.
+  - loadbalance: uma caracteristica dos microservices é que eles não podem guardar estado transacional, pois são construídos para serem desligados ou replicados, um loadbalance faria o papel de distribuição de carga, quando existirem várias instancias dos nosso microservices.
+  - configuração externalizada: o microservice é agnóstico ao ambiente, dessa forma deve funcionar igualmente em dev, hom e prod. Respeitando as configurações de cara ambiente inserido. Existem algumas soluções como: configmap do k8s, parameter store da aws, spring config entre outros.
