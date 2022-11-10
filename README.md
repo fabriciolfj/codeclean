@@ -249,7 +249,7 @@ public Cliente getCliente() {
 # Arquiterua de microserviços
 - a principal característica da arquitetura de microserviços é a decomposição da solução em aplicações com uma ou poucas funcionalidades.
 - muitas vezes migradas de um sistema monolito, essa arquitetura proporciona maior velocidade na evolução dos domínios de cada microservice.
-- o tamanho do microservice é relativo e depende da situação, quando mais fina a granularidade, maior será minha malha de microservices.
+- o tamanho do microservice é relativo e depende da situação, quando mais fina a granularidade, maior será a malha de microservices.
 - diante desse cenário surge novos desafios, necessidades e novos componentes, como:
 
 #### gateway
