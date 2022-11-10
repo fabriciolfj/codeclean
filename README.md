@@ -134,7 +134,7 @@ public Cliente getCliente() {
 
 #### SOLID
  - SRP : um módulo deve ter uma, e apenas uma razão para mudar (ou pertencer a um ator).
- - OCP (aberto para mudança, fechado para modificação) : objetivo do sistema ser facil de estender, sem que a mudança gere alto impacto. Para concretizar esse objetivo, particionamos o sistema em compoenentes e organizamos esses componentes em uma hierarquia de dependência que proteja os camponentes de nivel mais alto das mudanças em componentes de nivel mais baixo: Por exemplo: quero proteger o compoente A do componentes B, componente B deve depender do componente A para isso.
+ - OCP (aberto para mudança, fechado para modificação) : objetivo do sistema ser facil de extender, sem que a mudança gere alto impacto. Para concretizar esse objetivo, particionamos o sistema em compoenentes e organizamos esses componentes em uma hierarquia de dependência que proteja os camponentes de nivel mais alto das mudanças em componentes de nivel mais baixo: Por exemplo: quero proteger o compoente A do componentes B, componente B deve depender do componente A para isso.
  - LSP (substituição de liskov) : capacidade de substituir as entidades filhas pelas pais, para usamos interfaces e heranças (polimorfismo).
  - ISP (segregação de interfaces) : é prejudicial depender de módulos que contenham mais elementos que voce precisa, dependa apenas daquilo que você necessita e separe-as em interfaces.
  - DIP (inversão de dependência): dependa de abstrações e não de implementações, utiliza-se o pattern obstract factory.
