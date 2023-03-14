@@ -288,3 +288,16 @@ public Cliente getCliente() {
 - consistëncia: os clientes veêm as mesmas informações em todos os nós
 - disponibilidade: veremos as informações mesmo que algum nó esteja fora
 - tolerância de partição: o cluster continua funcionando, mesmo se ocorrer uma ou mais falhas entre os nós no sistema.
+
+# Dias para escrever um programa utilizando linguagem funcional
+- Nunca use nullvalores. Esqueça que o Scala ainda tem uma nullpalavra-chave.
+- Escreva apenas funções puras.
+- Use apenas valores imutáveis ​​( val) para todos os campos.
+- Cada linha de código deve ser uma expressão algébrica. Sempre que você usar um if, você também deve usar um else.
+- Funções puras nunca devem lançar exceções; em vez disso, eles geram valores como Option, Trye Either.
+- Não crie “classes” OOP que encapsulam dados e comportamento. Em vez disso, crie estruturas de dados imutáveis ​​usando caseclasses e, em seguida, escreva funções puras que operem nessas estruturas de dados.
+- Se você adotar essas regras simples, descobrirá que:
+- Seu cérebro vai parar de buscar atalhos para combater o sistema. (Jogar no varcampo ocasional ou na função impura apenas retardará seu processo de aprendizado .)
+- Seu código se tornará como álgebra.
+- Com o tempo, você entenderá o processo de pensamento do Scala/FP; você descobrirá que um conceito leva logicamente a outro.
+ 
