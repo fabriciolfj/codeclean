@@ -301,3 +301,8 @@ public Cliente getCliente() {
 - Seu código se tornará como álgebra.
 - Com o tempo, você entenderá o processo de pensamento do Scala/FP; você descobrirá que um conceito leva logicamente a outro.
  
+ 
+ ## Dicas app java no kubernetes
+ - probe liveness apontar para outra porta e não a porta principal da app
+ - redinesse levar em consideração as integrações da app, como banco de dados por exemplo.
+ - nunca definir memoria e cpu muito baixos na requisição e deixar o limite 25% maior dentro do deployment.
