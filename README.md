@@ -306,3 +306,11 @@ public Cliente getCliente() {
  - probe liveness apontar para outra porta e não a porta principal da app
  - redinesse levar em consideração as integrações da app, como banco de dados por exemplo.
  - nunca definir memoria e cpu muito baixos na requisição e deixar o limite 25% maior dentro do deployment.
+
+## Quais são as diferenças entre um balanceador de carga, um proxy reverso e um gateway de API?
+
+- Um 𝗹𝗼𝗮𝗱 𝗯𝗮𝗹𝗮𝗻𝗰𝗲𝗿 é um servidor que distribui o tráfego de rede de entrada em vários servidores. O objetivo é garantir que nenhum servidor seja sobrecarregado com tráfego, o que pode levar a tempos de resposta lentos ou até mesmo tempo de inatividade. Os balanceadores de carga são ideais para sites ou aplicativos de alto tráfego que precisam lidar com um grande volume de solicitações.
+
+- Um 𝗿𝗲𝘃𝗲𝗿𝘀𝗲 𝗽𝗿𝗼𝘅𝘆, por outro lado, é um servidor que fica entre o cliente e o servidor da web. O proxy reverso intercepta solicitações de clientes e as encaminha para o servidor apropriado. O proxy reverso também pode armazenar em cache o conteúdo solicitado com frequência, o que pode ajudar a melhorar o desempenho e reduzir a carga do servidor. Os proxies reversos são ideais para sites ou aplicativos que precisam lidar com um grande número de conexões simultâneas.
+
+- Um 𝗔𝗣𝗜 𝗴𝗮𝘁𝗲𝘄𝗮𝘆 é um servidor que atua como intermediário entre clientes e servidores back-end. O gateway de API é responsável por gerenciar solicitações de API, aplicar políticas de segurança e lidar com autenticação e autorização. Os gateways de API são ideais para arquiteturas de microsserviços, onde vários serviços precisam ser acessados por meio de uma única API.
