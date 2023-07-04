@@ -1,3 +1,11 @@
+# troubleshooting-java
+
+## Vazamento de memória
+- posíveis causas:
+  - quando estamos referenciando objetos que não são mais usados
+  - threads abertas que não terminam seu processo
+  - GC não gasta nenhum recurso de CPU. Isso também não é um bom sinal. Em outras palavras, o aplicativo gasta muito poder de processamento, mas não processa nada. Esses sinais geralmente indicam threads zumbis, que geralmente são consequência de problemas de simultaneidade.
+
 # Dicas para um código limpo
 
 - Cria-se métodos pequenos
