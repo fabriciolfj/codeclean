@@ -12,6 +12,25 @@
 - aumentar o metaspace (local aonde ficam os metadados das classes, metodos, campos da classe, nome da classe, pacote, modificadores de acesso e etc, necessários para a execução do app): -XX:MaxMetaspaceSize=100M
   - obs: situaões aonde o metaspace é totalmente preenchido, é uma grande volume no uso de reflexão. 
 
+# Patter saga
+- O padrão Saga é um padrão de arquitetura de software usado para coordenar transações distribuídas em sistemas distribuídos e de longa duração. Ele oferece uma abordagem para lidar com a consistência de dados em operações complexas que envolvem múltiplas etapas ou serviços.
+
+Em um sistema baseado no padrão Saga, uma transação é dividida em várias etapas (ou passos), cada uma representando uma ação a ser executada em um serviço específico. Cada etapa é encapsulada em uma unidade de trabalho atômica e possui a capacidade de desfazer (ou compensar) as operações realizadas, se necessário. Isso permite que o sistema reaja a falhas ou ações corretivas.
+
+Existem dois modelos principais para a implementação do padrão Saga:
+
+Modelo de Saga Baseado em Orquestração: Nesse modelo, existe um componente central chamado orquestrador que coordena todas as etapas da transação. O orquestrador decide a ordem das etapas, envia comandos para os serviços envolvidos e lida com possíveis erros e compensações. Ele controla todo o fluxo da transação.
+
+Modelo de Saga Baseado em Coreografia: Nesse modelo, cada serviço envolvido na transação é responsável por coordenar suas próprias operações e interações com outros serviços. Cada serviço decide como reagir a eventos e solicitações recebidas e inicia suas próprias ações, enviando mensagens para outros serviços, conforme necessário. As interações entre os serviços formam uma "coreografia" que define o fluxo da transação.
+
+Ambos os modelos têm suas vantagens e desvantagens, e a escolha entre eles depende do contexto e dos requisitos específicos do sistema.
+
+O padrão Saga aborda alguns desafios comuns em transações distribuídas, como o problema do duas fases de confirmação (2PC) que pode causar bloqueios e latência em operações distribuídas. Em vez disso, o padrão Saga oferece uma abordagem mais flexível, permitindo que cada etapa seja projetada para ser atomicamente consistente e capaz de desfazer as alterações, se necessário.
+
+No entanto, é importante considerar que a implementação do padrão Saga pode adicionar complexidade ao sistema, especialmente ao lidar com falhas, erros e compensações. É necessário ter um bom mecanismo de persistência de estado e registro de eventos para acompanhar o progresso da transação e garantir a consistência de dados.
+
+Vale ressaltar que o padrão Saga não resolve todos os problemas de transações distribuídas, e sua implementação requer cuidado e consideração dos requisitos específicos do sistema.
+
 # Dicas para um código limpo
 
 - Cria-se métodos pequenos
