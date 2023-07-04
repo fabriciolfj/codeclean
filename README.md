@@ -5,6 +5,12 @@
   - quando estamos referenciando objetos que não são mais usados
   - threads abertas que não terminam seu processo
   - GC não gasta nenhum recurso de CPU. Isso também não é um bom sinal. Em outras palavras, o aplicativo gasta muito poder de processamento, mas não processa nada. Esses sinais geralmente indicam threads zumbis, que geralmente são consequência de problemas de simultaneidade.
+  - quando ocorre um outofmemory error, precisamos de um head dump para verificar a causa
+
+## Soluções paliativas para o vazamento de memória  
+- aumentar a memoria head: -Xmx1G por exemplo
+- aumentar o metaspace (local aonde ficam os metadados das classes, metodos, campos da classe, nome da classe, pacote, modificadores de acesso e etc, necessários para a execução do app): -XX:MaxMetaspaceSize=100M
+  - obs: situaões aonde o metaspace é totalmente preenchido, é uma grande volume no uso de reflexão. 
 
 # Dicas para um código limpo
 
