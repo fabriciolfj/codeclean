@@ -4,6 +4,9 @@
   - caso tenha problemas como codigo 62, utiliza como arg na vm do app -Xverify:none
 - devemos criar perfis com base em uma amostragem e não da base de codigo por um todo.
 
+## problema nas consultas n+1
+- Quando uma estrutura precisa obter dados de várias tabelas, ela geralmente sabe compor uma consulta e obter todos os dados em uma única chamada. No entanto, se você não usar o framework corretamente, ele pode pegar apenas parte dos dados com uma consulta inicial e então, para cada registro inicialmente recuperado, executar uma consulta separada. Assim, ao invés de executar apenas uma consulta, o framework enviará uma consulta inicial mais N outras (uma para cada um dos N registros recuperados pela primeira); chamamos isso de problema de consulta N+1, que geralmente cria uma latência significativa executando muitas consultas em vez de apenas uma.  
+
 ## Vazamento de memória
 - posíveis causas:
   - quando estamos referenciando objetos que não são mais usados
