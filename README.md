@@ -1,6 +1,7 @@
 # troubleshooting-java
 - para investigar problemas em app, devemos utilizar ferramentas criadoras de perfis
- - por exemplo temos o visualvm, para monitoramente e análise de desempenho para app java. 
+  - por exemplo temos o visualvm, para monitoramente e análise de desempenho para app java.
+  - caso tenha problemas como codigo 62, utiliza como arg na vm do app -Xverify:none
 - devemos criar perfis com base em uma amostragem e não da base de codigo por um todo.
 
 ## Vazamento de memória
