@@ -1,4 +1,7 @@
 # troubleshooting-java
+- para investigar problemas em app, devemos utilizar ferramentas criadoras de perfis
+ - por exemplo temos o visualvm, para monitoramente e análise de desempenho para app java. 
+- devemos criar perfis com base em uma amostragem e não da base de codigo por um todo.
 
 ## Vazamento de memória
 - posíveis causas:
@@ -6,6 +9,9 @@
   - threads abertas que não terminam seu processo
   - GC não gasta nenhum recurso de CPU. Isso também não é um bom sinal. Em outras palavras, o aplicativo gasta muito poder de processamento, mas não processa nada. Esses sinais geralmente indicam threads zumbis, que geralmente são consequência de problemas de simultaneidade.
   - quando ocorre um outofmemory error, precisamos de um head dump para verificar a causa
+ 
+## desempenho
+- verifique o tempo de execução e o tempo de cpu, caso aja tempo de execução e o tempo de cpu seja 0, o app está esperando por algum
 
 ## Soluções paliativas para o vazamento de memória  
 - aumentar a memoria head: -Xmx1G por exemplo
