@@ -31,6 +31,10 @@
 ## metodo esperando por si mesmo
 - quando a sua thread foi travada
 
+## thread bloqueada vs tread em espera
+- thread e bloqueada em um bloco de codigo sincronizado
+- thread em espera, o monitor definiu explicitamentepara o estado bloqueado. Thread em espera pode continuar sua execução somente após o monitor informar explicitamente que ele pode prosseguir com sua execução.
+
 # Patter saga
 - O padrão Saga é um padrão de arquitetura de software usado para coordenar transações distribuídas em sistemas distribuídos e de longa duração. Ele oferece uma abordagem para lidar com a consistência de dados em operações complexas que envolvem múltiplas etapas ou serviços.
 
