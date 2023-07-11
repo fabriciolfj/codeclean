@@ -20,7 +20,13 @@
 ## Soluções paliativas para o vazamento de memória  
 - aumentar a memoria head: -Xmx1G por exemplo
 - aumentar o metaspace (local aonde ficam os metadados das classes, metodos, campos da classe, nome da classe, pacote, modificadores de acesso e etc, necessários para a execução do app): -XX:MaxMetaspaceSize=100M
-  - obs: situaões aonde o metaspace é totalmente preenchido, é uma grande volume no uso de reflexão. 
+  - obs: situaões aonde o metaspace é totalmente preenchido, é uma grande volume no uso de reflexão.
+ 
+## JProfiler
+- possui alguns recursos a mais que o visualVM, como:
+  - grafico de chamadas
+  - identificador se sua app está fechando corretamente as conexões com uma base relacional
+  - gráfica de chamas, demostra a pilha de chamadas 
 
 # Patter saga
 - O padrão Saga é um padrão de arquitetura de software usado para coordenar transações distribuídas em sistemas distribuídos e de longa duração. Ele oferece uma abordagem para lidar com a consistência de dados em operações complexas que envolvem múltiplas etapas ou serviços.
