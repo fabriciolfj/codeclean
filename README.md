@@ -28,6 +28,9 @@
   - identificador se sua app está fechando corretamente as conexões com uma base relacional
   - gráfica de chamas, demostra a pilha de chamadas 
 
+## metodo esperando por si mesmo
+- quando a sua thread foi travada
+
 # Patter saga
 - O padrão Saga é um padrão de arquitetura de software usado para coordenar transações distribuídas em sistemas distribuídos e de longa duração. Ele oferece uma abordagem para lidar com a consistência de dados em operações complexas que envolvem múltiplas etapas ou serviços.
 
