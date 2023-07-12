@@ -20,6 +20,25 @@
 ## dump threads
 - ideal para analisar congelamento do app (deadloack de threads)
 - para pegar o pid do processo jps -l e jstack <<PID>> > test.dump para gerar o dump
+- podemos importar o dump em https://fastthread.io/ para facilitar a leitura ou ler o arquivo bruto
+```
+topico                 priodidade no so, tempo de cpu, tempo total                   id da thread no so descricao do estado da thread  identificacao                
+"_Producer" #16 prio=5 os_prio=0 cpu=46.88ms elapsed=763.96s tid=0x000002f964987690 nid=0xcac waiting for monitor entry  [0x000000fe5ceff000]
+   java.lang.Thread.State: BLOCKED (on object monitor) //trace
+    at main.Producer.run(Unknown Source)
+    - waiting to lock <0x000000052e0313f8> -- esta dando lock no recurso com essa identificacao identificacao
+ (a java.util.ArrayList)     
+    - locked <0x000000052e049d38> 
+ (a java.util.ArrayList)     
+ 
+"_Consumer" #18 prio=5 os_prio=0 cpu=0.00ms 
+ elapsed=763.96s tid=0x000002f96498b030 
+ nid=0x4254 waiting for monitor entry  [0x000000fe5cfff000]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+    at main.Consumer.run(Unknown Source)
+    - waiting to lock <0x000000052e049d38> (a java.util.ArrayList)
+    - locked <0x000000052e0313f8> (a java.util.ArrayList)
+```
 
 ## Soluções paliativas para o vazamento de memória  
 - aumentar a memoria head: -Xmx1G por exemplo
