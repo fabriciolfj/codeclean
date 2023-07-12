@@ -17,6 +17,9 @@
 ## desempenho
 - verifique o tempo de execução e o tempo de cpu, caso aja tempo de execução e o tempo de cpu seja 0, o app está esperando por algum
 
+## dump threads
+- ideal para analisar congelamento do app (deadloack de threads)
+
 ## Soluções paliativas para o vazamento de memória  
 - aumentar a memoria head: -Xmx1G por exemplo
 - aumentar o metaspace (local aonde ficam os metadados das classes, metodos, campos da classe, nome da classe, pacote, modificadores de acesso e etc, necessários para a execução do app): -XX:MaxMetaspaceSize=100M
