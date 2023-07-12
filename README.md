@@ -19,6 +19,7 @@
 
 ## dump threads
 - ideal para analisar congelamento do app (deadloack de threads)
+- para pegar o pid do processo jps -l e jstack <<PID>> para gerar o dump
 
 ## Soluções paliativas para o vazamento de memória  
 - aumentar a memoria head: -Xmx1G por exemplo
