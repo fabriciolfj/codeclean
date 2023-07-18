@@ -28,6 +28,9 @@ public static void b() {
 - compartilhado entre as threads
 - problemas no head, como head cheia (outofmemoryError) são mais difíceis de resolver, pois quem indica o problema e a thread que não conseguiu armazenar e não a que encheu.
 
+## metaespaço
+- local na memória na jvm para armazear os tipos de dados usados para criar instâncias
+
 # troubleshooting-java
 - para investigar problemas em app, devemos utilizar ferramentas criadoras de perfis
   - por exemplo temos o visualvm, para monitoramente e análise de desempenho para app java.
