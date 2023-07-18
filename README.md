@@ -1,3 +1,31 @@
+# Gerenciamento de memória java
+## stack
+- local na memoria heap, utilizada pela thread
+- aonde ficam armazenadas as variáveis locais e referência a instância de objeto
+- a stack usa o conceito de LIFO (ultimo que entrada, primeiro que sai)
+- a camada é removida, quando o bloco de codigo termina (quando termina sua exeução, lançã uma exception ou tem um return), exemplo
+
+```
+public static void main(String [] args) { main cria uma camada na pilha
+  int x = 10;
+  a(); cria uma camada na filha e dp que chamou esse metodo, esta camada e removida
+  b(); 
+}
+ 
+public static void a() {
+  int y = 20;
+}
+ 
+public static void b() {
+  int y = 30;
+}
+// nesse exemplo quando termina o metodo main, a thread encerra sua execução, a pilha fica vazia e é removida
+// por fim a thread entra no ciclo de encerramento
+```
+
+## headp
+- local aonde armazena-se as instâncias dos objetos
+
 # troubleshooting-java
 - para investigar problemas em app, devemos utilizar ferramentas criadoras de perfis
   - por exemplo temos o visualvm, para monitoramente e análise de desempenho para app java.
