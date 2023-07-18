@@ -25,6 +25,7 @@ public static void b() {
 
 ## headp
 - local aonde armazena-se as instâncias dos objetos
+- compartilhado entre as threads
 
 # troubleshooting-java
 - para investigar problemas em app, devemos utilizar ferramentas criadoras de perfis
@@ -37,6 +38,7 @@ public static void b() {
 
 ## Vazamento de memória
 - posíveis causas:
+  - adicionando instâncias na memória, mas nunca as remove
   - quando estamos referenciando objetos que não são mais usados
   - threads abertas que não terminam seu processo
   - GC não gasta nenhum recurso de CPU. Isso também não é um bom sinal. Em outras palavras, o aplicativo gasta muito poder de processamento, mas não processa nada. Esses sinais geralmente indicam threads zumbis, que geralmente são consequência de problemas de simultaneidade.
