@@ -26,6 +26,7 @@ public static void b() {
 ## headp
 - local aonde armazena-se as instâncias dos objetos
 - compartilhado entre as threads
+- problemas no head, como head cheia (outofmemoryError) são mais difíceis de resolver, pois quem indica o problema e a thread que não conseguiu armazenar e não a que encheu.
 
 # troubleshooting-java
 - para investigar problemas em app, devemos utilizar ferramentas criadoras de perfis
