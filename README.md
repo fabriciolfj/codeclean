@@ -6,6 +6,11 @@
 -XX:+HeapDumpOnOutOfMemoryError    
 -XX:HeapDumpPath=heapdump.bin
 ```
+- para gerar via comamnd line
+```
+jps -l para achar o pid
+jmap -dump:format=b,file=C:/DA/heapdump.bin 25320
+```
 
 ## stack
 - local na memoria heap, utilizada pela thread
