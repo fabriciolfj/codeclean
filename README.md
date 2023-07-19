@@ -1,4 +1,12 @@
 # Gerenciamento de memória java
+
+## configurando um app para gerar um headdump
+- quando o app ficar sem memória ele gerará um arquivo headpdump.bin na raiz
+```
+-XX:+HeapDumpOnOutOfMemoryError    
+-XX:HeapDumpPath=heapdump.bin
+```
+
 ## stack
 - local na memoria heap, utilizada pela thread
 - aonde ficam armazenadas as variáveis locais e referência a instância de objeto
@@ -427,3 +435,4 @@ public Cliente getCliente() {
 - Um 𝗿𝗲𝘃𝗲𝗿𝘀𝗲 𝗽𝗿𝗼𝘅𝘆, por outro lado, é um servidor que fica entre o cliente e o servidor da web. O proxy reverso intercepta solicitações de clientes e as encaminha para o servidor apropriado. O proxy reverso também pode armazenar em cache o conteúdo solicitado com frequência, o que pode ajudar a melhorar o desempenho e reduzir a carga do servidor. Os proxies reversos são ideais para sites ou aplicativos que precisam lidar com um grande número de conexões simultâneas.
 
 - Um 𝗔𝗣𝗜 𝗴𝗮𝘁𝗲𝘄𝗮𝘆 é um servidor que atua como intermediário entre clientes e servidores back-end. O gateway de API é responsável por gerenciar solicitações de API, aplicar políticas de segurança e lidar com autenticação e autorização. Os gateways de API são ideais para arquiteturas de microsserviços, onde vários serviços precisam ser acessados por meio de uma única API.
+
