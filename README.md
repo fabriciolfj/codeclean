@@ -22,7 +22,7 @@ select { product: p.name, count: count(referrers(p))} from model.Product p
 - local na memoria heap, utilizada pela thread
 - aonde ficam armazenadas as variáveis locais e referência a instância de objeto
 - a stack usa o conceito de LIFO (ultimo que entrada, primeiro que sai)
-- a camada é removida, quando o bloco de codigo termina (quando termina sua exeução, lançã uma exception ou tem um return), exemplo
+- a camada é removida, quando o bloco de codigo termina (quando termina sua execução, lança uma exception ou tem um return), exemplo
 
 ```
 public static void main(String [] args) { main cria uma camada na pilha
