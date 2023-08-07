@@ -42,7 +42,7 @@ public static void b() {
 // por fim a thread entra no ciclo de encerramento
 ```
 
-## headp
+## head
 - local aonde armazena-se as instâncias dos objetos
 - compartilhado entre as threads
 - problemas no head, como head cheia (outofmemoryError) são mais difíceis de resolver, pois quem indica o problema e a thread que não conseguiu armazenar e não a que encheu.
