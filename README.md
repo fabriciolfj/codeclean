@@ -421,7 +421,7 @@ public Cliente getCliente() {
 - disponibilidade: veremos as informações mesmo que algum nó esteja fora
 - tolerância de partição: o cluster continua funcionando, mesmo se ocorrer uma ou mais falhas entre os nós no sistema.
 
-# Dias para escrever um programa utilizando linguagem funcional
+# Dicas para escrever um programa utilizando linguagem funcional
 - Nunca use nullvalores. Esqueça que o Scala ainda tem uma nullpalavra-chave.
 - Escreva apenas funções puras.
 - Use apenas valores imutáveis ​​( val) para todos os campos.
