@@ -320,7 +320,7 @@ public Cliente getCliente() {
     - domain
     - ui
 
-- arquietura de um sistema é definida pelos limites específicos entro desse sistema e pelas dependências que cruzam esses limites.
+- arquietura de um sistema é definida pelos limites específicos dentro desse sistema e pelas dependências que cruzam esses limites.
 
 #### Separação de fronteiras
 - Estabelecer limites entre os componeentes de software, onde um não conheça os detalhes do outro.
