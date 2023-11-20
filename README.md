@@ -1,3 +1,7 @@
+# Pontos importantes DDD (domain driven design)
+- linguagem onipreente
+- contexto delimitado
+
 # dicas na criação de uma app backend
 - crie annotations customizadas (vinculando a constraint validation), para uso em validações
 - em caso de api rest, coloque o openapi
