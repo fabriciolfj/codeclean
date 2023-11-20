@@ -413,6 +413,23 @@ public Cliente getCliente() {
 - o microservice deve ser resiliente, para isso existem alguns patterns que nos ajudam, como:
   - fallback: resposta alternativa a uma falha
   - circuitbreaker: quando aberto falha rapidamente ou emite uma reposta de fallback, quando fechado segui o procedimento padrão. Ele é aberto diante a falha específica(ou não) e número de ocorrências.
+  - exemplo de configuração de um circuit breaker
+    ```
+    resilience4j.circuitbreaker:
+  instances:
+    product:
+      allowHealthIndicatorToFail: false
+      registerHealthIndicator: true
+      slidingWindowType: COUNT_BASED
+      slidingWindowSize: 5
+      failureRateThreshold: 50
+      waitDurationInOpenState: 10000
+      permittedNumberOfCallsInHalfOpenState: 3
+      automaticTransitionFromOpenToHalfOpenEnabled: true
+      ignoreExceptions:
+        - se.magnus.api.exceptions.InvalidInputException
+        - se.magnus.api.exceptions.NotFoundException
+    ```
   - retry: diante a falha, o microservice que depende da resposta do microservice com erro, repedi em um intervalo de tempo a requisição, com a esperança de receber o resultado com sucesso.
 - bulkhead : limitar o número de requisições simultaneas ao microserice.
 
