@@ -1,3 +1,12 @@
+# dicas na criação de uma app backend
+- crie annotations customizadas (vinculando a constraint validation), para uso em validações
+- em caso de api rest, coloque o openapi
+- delegue as mensagens de validações para um arquivo externo, como message.properties ou exceptions.properties
+- use arquitetura clean, ou seja, separe o dominio da app dos frameworks,
+- caso utilize um container context, como spring, crie uma annotation personalizada como @usecase e esta vincule a @component(spring) ou @applicationcontext (quarkus)
+- use contratos de fronteira para o domain, ou externalize o domain para adpater (validar caso a caso)
+- caso precise validar os dados de uma mensagem, faça o dto implementar constraint validation e executar a validação.
+
 # Gerenciamento de memória java
 
 ## configurando um app para gerar um headdump
