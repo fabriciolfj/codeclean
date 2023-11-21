@@ -1,6 +1,36 @@
 # Pontos importantes DDD (domain driven design)
 - linguagem onipreente
 - contexto delimitado
+- dominio e subdominio
+
+## Diferença entre contexto delimitado e subdominio:
+```
+Contexto delimitado e subdomínio são dois conceitos relacionados a arquitetura de software, especificamente Domain-Driven Design (DDD):
+
+**Contexto Delimitado**
+
+- É uma delimitação clara dos processos de negócio, regras e responsabilidades que pertencem AQUELE contexto.
+
+- É uma fronteira ao redor de um modelo de domínio para isolá-lo das complexidades externas.
+
+- Exemplos: contexto de pedidos, contexto de entregas, contexto de pagamentos.
+
+**Subdomínio**
+
+- Representa uma área de conhecimento ou atividade dentro de um negócio que é única e pode ser isolada logicamente do restante.
+
+- Um contexto delimitado pode conter vários subdomínios, cada um com sua própria linguagem e regras.
+
+- Exemplos: dentro do contexto de pedidos, pode haver o subdomínio de crédito, subdomínio de precificação, subdomínio de inventário.
+
+Em resumo:
+
+- Contexto delimitado é um isolamento vertical de responsabilidade.
+
+- Subdomínio é uma divisão horizontal dentro de um contexto, para agrupar especialidades.
+
+O contexto delimitado define uma fronteira, dentro da qual podemos modelar subdomínios quando necessário.
+```
 
 # dicas na criação de uma app backend
 - crie annotations customizadas (vinculando a constraint validation), para uso em validações
