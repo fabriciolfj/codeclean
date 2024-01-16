@@ -2,7 +2,7 @@
 - linguagem onipreente
 - contexto delimitado
 - dominio e subdominio
-
+ 
 ## Diferença entre contexto delimitado e subdominio:
 ```
 Contexto delimitado e subdomínio são dois conceitos relacionados a arquitetura de software, especificamente Domain-Driven Design (DDD):
