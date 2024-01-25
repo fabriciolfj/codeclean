@@ -505,5 +505,34 @@ public Cliente getCliente() {
 
 - Um 𝗿𝗲𝘃𝗲𝗿𝘀𝗲 𝗽𝗿𝗼𝘅𝘆, por outro lado, é um servidor que fica entre o cliente e o servidor da web. O proxy reverso intercepta solicitações de clientes e as encaminha para o servidor apropriado. O proxy reverso também pode armazenar em cache o conteúdo solicitado com frequência, o que pode ajudar a melhorar o desempenho e reduzir a carga do servidor. Os proxies reversos são ideais para sites ou aplicativos que precisam lidar com um grande número de conexões simultâneas.
 
+# spring-data-advanced
+
+- Colocar findall como fetcher para evitar o problema de n+1
+- Colocar clear no delete
+
+# Alguns conceitos
+- ACID -> transação que fornece atomicidade, consistência, isolamento e durabilidade.
+
+# Uso do @Lock
+- para consultas podemos utilizar no método alguns tipos do alocação da tabela
+  - @Lock(LockModeType.PESSIMISTIC_READ) -> aloca a tabela imediatamente, não permite multiplos acessos
+    - recomenda-se colocar um tempo para alocar: @QueryHints({@QueryHint(name = "javax.persistence.lock.timeout", value = "3000")})
+  - @Lock(LockModeType.OPTIMISTIC_FORCE_INCREMENT) -> versiona a entidade, caso ela esteja diferente no momento da atualização, com o versionamento na base de dados, ocorre uma exception e é realizado rollback.
+
+# Uso do isolation
+- para transações devemos seguir, dependendo de cada caso, o ACID -> Atomicidade, Consistência, Isolamento e Durabilidade
+- Em vez de utilizar o @Lock, podemos utilizar o @Transactional(isolation = Isolation.**), onde é mais seguro e gerenciável diretamente pelo spring data
+- temos alguns tipos de isolamento, como:
+  - READ_UNCOMMITTED -> permite acessos simultâneos e leitura de dados não comitados.
+  - READ_COMMITTED -> permite apenas dados comitados, no entanto se outra transação confirmar os dados, teremos um resultado diferente.
+  - REPEATABLE_READ -> permite apenas dados comitados e não demonstra dados comitados em outra transação por um tempo
+  - SERIALIZÁVEL -> evita todos os problemas acima, mas limta o acesso simultâneo ao recurso.
+
+# Teorema CAP
+- C (consistencia) -> todos leêm as mesmas informações ao mesmo tempo, os dados devem ser replicados a todos os nós
+- a (disponibilidade) -> sempre temos respostas da base, mesmo diante a nós inativos.
+- P (particionamento) -> cliente deve continuar recebendo os dados, mesmo em ocorra falha em algum nó
+
+
 - Um 𝗔𝗣𝗜 𝗴𝗮𝘁𝗲𝘄𝗮𝘆 é um servidor que atua como intermediário entre clientes e servidores back-end. O gateway de API é responsável por gerenciar solicitações de API, aplicar políticas de segurança e lidar com autenticação e autorização. Os gateways de API são ideais para arquiteturas de microsserviços, onde vários serviços precisam ser acessados por meio de uma única API.
 
