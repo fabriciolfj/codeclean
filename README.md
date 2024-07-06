@@ -536,3 +536,144 @@ public Cliente getCliente() {
 
 - Um 𝗔𝗣𝗜 𝗴𝗮𝘁𝗲𝘄𝗮𝘆 é um servidor que atua como intermediário entre clientes e servidores back-end. O gateway de API é responsável por gerenciar solicitações de API, aplicar políticas de segurança e lidar com autenticação e autorização. Os gateways de API são ideais para arquiteturas de microsserviços, onde vários serviços precisam ser acessados por meio de uma única API.
 
+# Consulta recursiva com hibernate
+```
+A Postentidade é mapeada da seguinte forma:
+
+@Entity(name = "Post")
+@Table(name = "post")
+public class Post {
+⠀
+    @Id
+    private Long id;
+⠀
+    @Column(length = 100)
+    private String title;
+}
+E a PostCommententidade filha é mapeada assim:
+
+@Entity(name = "PostComment")
+@Table(name = "post_comment")
+public class PostComment {
+⠀
+    @Id
+    @GeneratedValue(
+        generator = "post_comment_seq",
+        strategy = GenerationType.SEQUENCE
+    )
+    @SequenceGenerator(
+        name = "post_comment_seq",
+        allocationSize = 1
+    )
+    private Long id;
+⠀
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "post_id")
+    private Post post;
+⠀
+    @Column(name = "created_on")
+    private LocalDateTime createdOn;
+⠀
+    @Column(length = 250)
+    private String review;
+⠀
+    private int score;
+⠀
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_id")
+    private PostComment parent;
+⠀
+    @OneToMany(
+        mappedBy = "parent",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
+    private List<PostComment> children = new ArrayList<>();
+}
+Após mapear as entidades, vamos adicionar as seguintes Postentidades PostComment:
+
+Post post = new Post()
+    .setId(1L)
+    .setTitle("Post 1");
+ 
+entityManager.persist(post);
+ 
+entityManager.persist(
+    new PostComment()
+        .setPost(post)
+        .setCreatedOn(
+            LocalDateTime.of(2024, 6, 13, 12, 23, 5)
+        )
+        .setScore(1)
+        .setReview("Comment 1")
+        .addChild(
+            new PostComment()
+                .setPost(post)
+                .setCreatedOn(
+                    LocalDateTime.of(2024, 6, 14, 13, 23, 10)
+                )
+                .setScore(2)
+                .setReview("Comment 1.1")
+        )
+        .addChild(
+            new PostComment()
+                .setPost(post)
+                .setCreatedOn(
+                    LocalDateTime.of(2024, 6, 14, 15, 45, 15)
+                )
+                .setScore(2)
+                .setReview("Comment 1.2")
+                .addChild(
+                    new PostComment()
+                        .setPost(post)
+                        .setCreatedOn(
+                            LocalDateTime.of(2024, 6, 15, 10, 15, 20)
+                        )
+                        .setScore(1)
+                        .setReview("Comment 1.2.1")
+                )
+        )
+);
+Hibernate COM consulta RECURSIVA
+Nosso caso de uso exige que busquemos uma hierarquia inteira de post_commententidades que descendem de um post_commentregistro de tabela pai fornecido.
+
+Como expliquei neste artigo , podemos usar uma WITH RECURSIVEconsulta SQL nativa para buscar uma hierarquia de registros de tabela, e essa solução funciona bem com qualquer versão do Hibernate.
+
+Entretanto, desde o Hibernate 6, também podemos usar a consulta JPQL para buscar estruturas de dados hierárquicas usando a WITHcláusula, conforme demonstrado pela consulta a seguir:
+
+List<PostCommentRecord>  postComments = entityManager.createQuery("""
+    WITH postCommentChildHierarchy AS (
+      SELECT pc.children pc
+      FROM PostComment pc
+      WHERE pc.id = :commentId
+⠀
+      UNION ALL
+⠀
+      SELECT pc.children pc
+      FROM PostComment pc
+      JOIN postCommentChildHierarchy pch ON pc = pch.pc
+      ORDER BY pc.id
+    )
+    SELECT new PostCommentRecord(
+        pch.pc.id,
+        pch.pc.createdOn,
+        pch.pc.review,
+        pch.pc.score,
+        pch.pc.parent.id
+    )
+    FROM postCommentChildHierarchy pch
+    """, PostCommentRecord.class)
+.setParameter("commentId", 1L)
+.getResultList();
+⠀
+assertEquals(3, postComments.size());
+assertEquals("Comment 1.1", postComments.get(0).review);
+assertEquals("Comment 1.2", postComments.get(1).review);
+assertEquals("Comment 1.2.1", postComments.get(2).review);
+A consulta WITH RECURSIVE do Hibernate é contraída assim:
+
+. A WITHcláusula usa um alias que podemos referenciar mais abaixo em nossa consulta SQL.
+. A primeira consulta dentro da WITHcláusula é chamada de membro âncora e define os registros raiz que serão adicionados à nossa postCommentChildHierarchytabela virtual.
+. A segunda consulta dentro da WITHcláusula é chamada de membro recursivo e será repetida até produzir um conjunto de resultados vazio. Os registros produzidos pela execução do membro recursivo serão adicionados à postCommentChildHierarchytabela virtual.
+. A última consulta seleciona os registros da postCommentChildHierarchytabela virtual e mapeia os registros para o PostCommentRecord.
+```
