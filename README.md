@@ -536,6 +536,9 @@ public Cliente getCliente() {
 
 - Um 𝗔𝗣𝗜 𝗴𝗮𝘁𝗲𝘄𝗮𝘆 é um servidor que atua como intermediário entre clientes e servidores back-end. O gateway de API é responsável por gerenciar solicitações de API, aplicar políticas de segurança e lidar com autenticação e autorização. Os gateways de API são ideais para arquiteturas de microsserviços, onde vários serviços precisam ser acessados por meio de uma única API.
 
+# Test transações spring
+- para simular uma situação real, em produção em um test integrado com o spring, alem de anotar o método com @transaction, devemos anotar com @commit.
+
 # Consulta recursiva com hibernate
 ```
 A Postentidade é mapeada da seguinte forma:
