@@ -1,3 +1,23 @@
+# OLTP vs OLAP
+```
+OLTP (Online Transaction Processing) e OLAP (Online Analytical Processing) são estilos de processamento em sistemas de gerenciamento de banco de dados.
+Aqui estão algumas das principais características e usos de cada um.
+  OLTP (Online Transaction Processing):
+  OLTP é mais comum em sistemas de gerenciamento de transações diárias, onde a velocidade e eficiência são críticas. Por exemplo, sistemas bancários ou varejistas.
+  Os sistemas OLTP gerenciam, manipulam e mantêm os dados transacionais (ou seja, detalhes de cada transação).
+  OLTP envolve inserção, atualização e/ou exclusão de pequenas quantidades de dados.
+  As transações OLTP são frequentemente curtas e rápidas.
+
+OLAP (Online Analytical Processing):
+  OLAP, por outro lado, é mais comum em sistemas de data warehouse, onde é crucial a análise detalhada dos dados.
+  Os sistemas OLAP lidam com dados históricos que foram processados e agregados de forma a facilitar o processo de tomada de decisões, relatórios, previsões, análises de mercado, etc.
+  OLAP envolve a manipulação de dados retirados de fontes de dados OLTP em uma escala muito grande.
+
+As transações OLAP são geralmente complexas e podem levar horas ou mesmo dias para serem concluídas.
+Essencialmente, OLTP é sobre o processamento eficiente das transações diárias, enquanto OLAP é sobre o processamento eficiente das consultas para análise de dados e relatórios. Ambos desempenham um papel crítico em diferentes aspectos da tomada de decisões das empresas.
+
+```
+
 # Pontos importantes DDD (domain driven design)
 - linguagem onipreente
 - contexto delimitado
