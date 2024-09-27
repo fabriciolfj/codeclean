@@ -75,7 +75,7 @@ jps -l para achar o pid
 jmap -dump:format=b,file=C:/DA/heapdump.bin 25320
 ```
 - podemos importar o dump em uma ferramenta, como o visualvm, para investigar
-- ao importar podemos ver o resumo do que está ocorrendo, objetos que estão dentro do heap ou até efetuar consultas oql
+- ao importar podemos ver o resumo do que está ocorrendo, objetos que estão dentro do heap ou até efetuar consultas sql
 - no exemplo abaixo para identificar o número de referências, ou seja, quando tenho um alto número de instâncias e um pequeno número de referência, é sinal de vazamento de memória
 ```
 select { product: p.name, count: count(referrers(p))} from model.Product p
