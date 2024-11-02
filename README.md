@@ -3,6 +3,7 @@
 Domain Events:
 
 Representam mudanças significativas no domínio
+Acrescenta uma linha de tempo nos dados
 São imutáveis e contêm toda informação necessária
 Mantêm o histórico completo do agregado.
 Não salvamos o agregado, por exemplo Account, apenas os eventos e o recuperamos eles com base no tempo (o mais recente, o último).
