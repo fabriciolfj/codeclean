@@ -1,3 +1,62 @@
+# Event sourcing DDD
+```
+Domain Events:
+
+Representam mudanças significativas no domínio
+São imutáveis e contêm toda informação necessária
+Mantêm o histórico completo do agregado.
+Não salvamos o agregado, por exemplo Account, apenas os eventos e o recuperamos eles com base no tempo (o mais recente, o último).
+
+Aggregate Root:
+BankAccount é o agregado que encapsula as regras de negócio
+Gera eventos para cada mudança de estado
+Mantém sua consistência através de invariantes
+
+Event Store:
+Armazena todos os eventos do sistema
+Garante a ordem e consistência dos eventos
+Permite reconstruir o estado do agregado
+
+Repository:
+Salva e recupera agregados usando o Event Store
+Gerencia a concorrência através de versionamento
+Reconstrói agregados a partir do histórico de eventos
+
+
+Benefícios desta abordagem:
+Auditoria:
+Histórico completo de mudanças
+Rastreabilidade de todas as operações
+Possibilidade de debugging temporal
+
+Evolução do Sistema:
+Facilita mudanças no modelo de domínio
+Permite reconstruir estados passados
+Possibilita novas visões dos dados
+
+Escalabilidade:
+Eventos podem ser processados assincronamente
+Facilita CQRS (Command Query Responsibility Segregation)
+Permite otimizações de performance
+
+
+Desafios e Considerações:
+Complexidade:
+Requer mais código inicial
+Curva de aprendizado maior
+Necessidade de lidar com versioning de eventos
+
+Performance:
+Reconstrução de estado pode ser custosa
+Necessidade de snapshots para otimização
+Gerenciamento de concorrência mais complexo
+
+Modelagem:
+Eventos devem ser bem definidos
+Necessidade de versionamento de eventos
+Cuidado com o tamanho dos agregados
+```
+
 # OLTP vs OLAP
 ```
 OLTP (Online Transaction Processing) e OLAP (Online Analytical Processing) são estilos de processamento em sistemas de gerenciamento de banco de dados.
