@@ -56,6 +56,150 @@ Eventos devem ser bem definidos
 Necessidade de versionamento de eventos
 Cuidado com o tamanho dos agregados
 ```
+- Exemplo
+```
+public interface EventStore {
+    void saveEvents(UUID aggregateId, List<DomainEvent> events, long expectedVersion);
+    List<DomainEvent> getEvents(UUID aggregateId);
+}
+
+// Implementação com JPA
+@Entity
+@Table(name = "event_store")
+public class EventEntry {
+    @Id
+    @GeneratedValue
+    private Long id;
+    
+    @Column(name = "aggregate_id")
+    private UUID aggregateId;
+    
+    @Column(name = "event_type")
+    private String eventType;
+    
+    @Column(name = "event_data", columnDefinition = "jsonb")
+    private String eventData;
+    
+    @Column(name = "version")
+    private long version;
+    
+    @Column(name = "timestamp")
+    private LocalDateTime timestamp;
+}
+
+@Repository
+public class JpaEventStore implements EventStore {
+    private final EntityManager entityManager;
+    private final ObjectMapper objectMapper;
+    
+    public JpaEventStore(EntityManager entityManager, ObjectMapper objectMapper) {
+        this.entityManager = entityManager;
+        this.objectMapper = objectMapper;
+    }
+    
+    @Override
+    @Transactional
+    public void saveEvents(UUID aggregateId, List<DomainEvent> events, long expectedVersion) {
+        // Verificar versão atual
+        Query query = entityManager.createQuery(
+            "SELECT MAX(e.version) FROM EventEntry e WHERE e.aggregateId = :aggregateId"
+        );
+        query.setParameter("aggregateId", aggregateId);
+        Long currentVersion = (Long) query.getSingleResult();
+        
+        if (currentVersion != null && currentVersion != expectedVersion) {
+            throw new ConcurrencyException(
+                String.format("Concurrent modification on aggregate %s", aggregateId)
+            );
+        }
+        
+        // Salvar novos eventos
+        for (DomainEvent event : events) {
+            EventEntry entry = new EventEntry();
+            entry.setAggregateId(aggregateId);
+            entry.setEventType(event.getClass().getName());
+            entry.setVersion(event.getVersion());
+            entry.setTimestamp(event.getTimestamp());
+            
+            try {
+                entry.setEventData(objectMapper.writeValueAsString(event));
+            } catch (JsonProcessingException e) {
+                throw new RuntimeException("Error serializing event", e);
+            }
+            
+            entityManager.persist(entry);
+        }
+    }
+    
+    @Override
+    public List<DomainEvent> getEvents(UUID aggregateId) {
+        TypedQuery<EventEntry> query = entityManager.createQuery(
+            "SELECT e FROM EventEntry e WHERE e.aggregateId = :aggregateId ORDER BY e.version",
+            EventEntry.class
+        );
+        query.setParameter("aggregateId", aggregateId);
+        
+        return query.getResultList().stream()
+            .map(this::deserializeEvent)
+            .collect(Collectors.toList());
+    }
+    
+    private DomainEvent deserializeEvent(EventEntry entry) {
+        try {
+            Class<?> eventClass = Class.forName(entry.getEventType());
+            return (DomainEvent) objectMapper.readValue(entry.getEventData(), eventClass);
+        } catch (Exception e) {
+            throw new RuntimeException("Error deserializing event", e);
+        }
+    }
+}
+
+// Exemplo de uso com Spring Data JPA
+@Repository
+public class BankAccountRepository {
+    private final EventStore eventStore;
+    
+    public BankAccountRepository(EventStore eventStore) {
+        this.eventStore = eventStore;
+    }
+    
+    public void save(BankAccount account) {
+        List<DomainEvent> uncommittedChanges = account.getUncommittedChanges();
+        if (!uncommittedChanges.isEmpty()) {
+            eventStore.saveEvents(
+                account.getId(),
+                uncommittedChanges,
+                account.getVersion() - uncommittedChanges.size()
+            );
+            account.markChangesAsCommitted();
+        }
+    }
+    
+    public BankAccount getById(UUID accountId) {
+        List<DomainEvent> events = eventStore.getEvents(accountId);
+        if (events.isEmpty()) {
+            throw new EntityNotFoundException("Account not found: " + accountId);
+        }
+        
+        BankAccount account = new BankAccount();
+        account.loadFromHistory(events);
+        return account;
+    }
+}
+
+// Schema SQL
+CREATE TABLE event_store (
+    id BIGSERIAL PRIMARY KEY,
+    aggregate_id UUID NOT NULL,
+    event_type VARCHAR(255) NOT NULL,
+    event_data JSONB NOT NULL,
+    version BIGINT NOT NULL,
+    timestamp TIMESTAMP NOT NULL,
+    CONSTRAINT uk_aggregate_version UNIQUE (aggregate_id, version)
+);
+
+CREATE INDEX idx_aggregate_id ON event_store (aggregate_id);
+```
 
 # OLTP vs OLAP
 ```
