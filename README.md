@@ -7,13 +7,32 @@ java -XX:+UseCompressedOops
      -XX:+UseCompressedClassPointers 
      -XX:+UseStringDeduplication
 ```
-## alocaçãp
+## alocação
 - quantidade de memoria utilizada pelo objeto
 
 ## tempo de via do objeto
 - muito dificil de medir ou estimar
 - o tempo de vida (lifecycle) de um objeto é o período entre sua criação (instanciação) e o momento em que ele se torna elegível para coleta pelo Garbage Collector, ou seja, quando não há mais referências alcançáveis a ele.
 
+## EDEN
+- aonde os objetos novos ficam
+
+## TLABS
+- thread local allocation buffers
+- quando uma thread precisa alocar um novo objeto, a JVM utiliza o TLAB (Thread Local Allocation Buffer) que é uma área específica da heap reservada para cada thread.
+- O processo funciona assim:
+  - Cada thread recebe seu próprio TLAB na Young Generation (Eden Space)
+  - Quando a thread cria um novo objeto, ele é inicialmente alocado no TLAB dessa thread
+  - Isso evita sincronização entre threads durante a alocação (melhor performance)
+- Quando o TLAB de uma thread fica cheio:
+  - A thread recebe um novo TLAB
+  - O TLAB antigo se torna parte normal do Eden Space
+  - Se não houver espaço para um novo TLAB, ocorre uma coleta de lixo (GC)
+- A alocação no TLAB é mais rápida porque:
+  - Não precisa de sincronização entre threads
+  - É uma operação simples de ponteiro
+  - Reduz contenção na heap compartilhada 
+- e outro ponto, quando thread recebe um objeto, ela aponta para outro endereço vazio na memória.
 
 # Event sourcing DDD
 ```
