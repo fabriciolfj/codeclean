@@ -7,6 +7,12 @@ java -XX:+UseCompressedOops
      -XX:+UseCompressedClassPointers 
      -XX:+UseStringDeduplication
 ```
+## alocaçãp
+- quantidade de memoria utilizada pelo objeto
+
+## tempo de via do objeto
+- muito dificil de medir ou estimar
+- o tempo de vida (lifecycle) de um objeto é o período entre sua criação (instanciação) e o momento em que ele se torna elegível para coleta pelo Garbage Collector, ou seja, quando não há mais referências alcançáveis a ele.
 
 
 # Event sourcing DDD
