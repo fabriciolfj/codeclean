@@ -1,3 +1,14 @@
+# Detalhes do garbage collection
+- hotspot java, utiliza várias técnicas para melhorar a performance do gc, como: evitar fragmentação, localidade/refrência para busca dos dados e compactuação.
+- alguns comandos que podemos utilizar.
+```
+# Habilitar principais otimizações
+java -XX:+UseCompressedOops 
+     -XX:+UseCompressedClassPointers 
+     -XX:+UseStringDeduplication
+```
+
+
 # Event sourcing DDD
 ```
 Domain Events:
