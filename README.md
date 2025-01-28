@@ -19,6 +19,7 @@ java -XX:+UseCompressedOops
 
 ## TLABS
 - thread local allocation buffers
+- é uma técnica de otimização importante utilizada pela JVM para melhorar a performance de alocação de objetos. Cada thread recebe seu próprio buffer de memória para alocação de objetos, o que reduz a contenção entre threads durante a alocação.
 - quando uma thread precisa alocar um novo objeto, a JVM utiliza o TLAB (Thread Local Allocation Buffer) que é uma área específica da heap reservada para cada thread.
 - O processo funciona assim:
   - Cada thread recebe seu próprio TLAB na Young Generation (Eden Space)
