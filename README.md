@@ -7,6 +7,7 @@ java -XX:+UseCompressedOops
      -XX:+UseCompressedClassPointers 
      -XX:+UseStringDeduplication
 ```
+- outro ponto, o tempo de recorrência do gc, não há um cronograma, ele e executado conforme a necessidade de memória, ou seja, com base em eventos.
 ## alocação
 - quantidade de memoria utilizada pelo objeto
 
