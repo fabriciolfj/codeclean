@@ -14,6 +14,54 @@ java -XX:+UseCompressedOops
 - muito dificil de medir ou estimar
 - o tempo de vida (lifecycle) de um objeto é o período entre sua criação (instanciação) e o momento em que ele se torna elegível para coleta pelo Garbage Collector, ou seja, quando não há mais referências alcançáveis a ele.
 
+## stw
+```
+O STW (Stop-The-World) é um momento durante a execução do Garbage Collector onde todas as threads da aplicação são pausadas para que o GC possa executar seu trabalho.
+Detalhando o funcionamento:
+
+O que acontece durante STW:
+
+
+Todas as threads da aplicação são pausadas
+Nenhum novo objeto pode ser alocado
+Nenhuma referência pode ser atualizada
+Apenas as threads do GC continuam executando
+
+
+Quando ocorre:
+
+
+Durante operações críticas do GC que precisam de consistência
+Na fase de marcação de objetos vivos
+Durante compactação/movimentação de objetos
+Quando precisa atualizar referências
+
+
+Impactos:
+
+
+Causa latência na aplicação
+Pode ser problemático para aplicações que precisam de resposta rápida
+O tempo de pausa varia conforme tamanho do heap e quantidade de objetos
+
+
+Em diferentes coletores:
+
+
+ParallelOld: STW durante todo o processo de coleta
+CMS: Tenta minimizar STW fazendo parte do trabalho concorrentemente
+G1: Usa STW mais curtos mas frequentes
+ZGC: Tenta manter STW abaixo de 10ms
+
+
+Monitoramento:
+
+
+GC logs mostram duração dos STW
+Pode ser monitorado via JMX
+Ferramentas como JVisualVM mostram pausas
+```
+
 ## EDEN
 - aonde os objetos novos ficam
 
