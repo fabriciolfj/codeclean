@@ -14,7 +14,50 @@ java -XX:+UseCompressedOops
 ## tempo de via do objeto
 - muito dificil de medir ou estimar
 - o tempo de vida (lifecycle) de um objeto é o período entre sua criação (instanciação) e o momento em que ele se torna elegível para coleta pelo Garbage Collector, ou seja, quando não há mais referências alcançáveis a ele.
+## pico de alocacao
+```
+Causas comuns:
 
+
+Processamento em lote de muitos dados de uma vez
+Cache sendo preenchido ou recarregado
+Upload de arquivos grandes
+Operações de bulk insert no banco de dados
+Geração de relatórios grandes
+Respostas HTTP com muito conteúdo
+
+
+Impactos:
+
+
+Pode disparar GCs mais frequentes
+Maior pressão na Young Generation
+Pode causar promoção prematura para Old Gen
+Risco de OutOfMemoryError se muito intenso
+Aumento no tempo de pausa do GC
+Degradação de performance da aplicação
+
+
+Como identificar:
+
+
+Monitoramento de métricas de alocação
+Análise de GC logs
+Ferramentas como JVisualVM ou JFR
+Aumento repentino no uso de memória
+GCs mais frequentes que o normal
+
+
+Soluções comuns:
+
+
+Implementar processamento em lotes menores
+Usar paginação
+Controlar tamanho máximo de uploads/downloads
+Object pooling para objetos grandes
+Otimizar algoritmos que geram muitas alocações
+Ajustar tamanho das generations do GC
+```
 ## stw
 ```
 O STW (Stop-The-World) é um momento durante a execução do Garbage Collector onde todas as threads da aplicação são pausadas para que o GC possa executar seu trabalho.
