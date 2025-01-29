@@ -127,6 +127,92 @@ Ferramentas como JVisualVM mostram pausas
   - Reduz contenção na heap compartilhada 
 - e outro ponto, quando thread recebe um objeto, ela aponta para outro endereço vazio na memória.
 
+## exemplo simplificado como funciona o gc
+```
+Considere uma aplicação processando uma lista de pedidos:
+
+Estado Inicial da Heap:
+
+CopyEden (vazio)
+S0 (vazio)
+S1 (vazio)
+Old Gen (alguns objetos antigos)
+
+Aplicação começa a criar objetos:
+
+CopyEden:
+- Pedido#1
+- Pedido#2
+- Pedido#3
+- Itens do Pedido
+- Objetos temporários
+
+Eden fica cheio, dispara Minor GC:
+
+
+JVM marca objetos vivos no Eden
+Pedidos #1, #2, #3 ainda têm referências (estão vivos)
+Objetos temporários não têm referências (são lixo)
+Objetos vivos são movidos para S0
+Eden é limpo
+
+CopyEden (vazio)
+S0:
+  - Pedido#1 (age=1)
+  - Pedido#2 (age=1)
+  - Pedido#3 (age=1)
+S1 (vazio)
+
+Mais alocações acontecem:
+
+CopyEden:
+  - Pedido#4
+  - Pedido#5
+  - Mais objetos temporários
+S0:
+  - Pedidos anteriores
+S1 (vazio)
+
+Novo Minor GC:
+
+
+Objetos vivos do Eden vão para S1
+Objetos sobreviventes de S0 também vão para S1
+Age dos objetos é incrementado
+
+CopyEden (vazio)
+S0 (vazio)
+S1:
+  - Pedido#1 (age=2)
+  - Pedido#2 (age=2)
+  - Pedido#3 (age=2)
+  - Pedido#4 (age=1)
+  - Pedido#5 (age=1)
+
+Se objetos sobrevivem a várias coletas (threshold, geralmente 15):
+
+
+São promovidos para Old Generation
+Exemplo: após mais GCs, Pedidos #1, #2, #3 vão para Old Gen
+
+CopyEden: (novos objetos)
+S0/S1: (objetos mais novos)
+Old Gen:
+  - Pedido#1
+  - Pedido#2
+  - Pedido#3
+Pontos importantes:
+
+Minor GC: coleta apenas Young Gen (Eden + Survivors)
+Major GC: coleta Old Gen
+Full GC: coleta toda a heap
+Survivor spaces (S0 e S1) nunca são usados ao mesmo tempo
+Objetos grandes podem ir direto para Old Gen
+Promoção prematura pode ocorrer se Survivor ficar cheio
+
+Este é um exemplo simplificado, mas mostra o ciclo básico de vida dos objetos na heap. 
+```
+
 # Event sourcing DDD
 ```
 Domain Events:
