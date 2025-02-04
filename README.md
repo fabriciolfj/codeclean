@@ -143,6 +143,51 @@ Barreiras otimizadas por JIT
 Este algoritmo é fundamental para GCs modernos e permite coleta de lixo com baixa latência em aplicações Java.
 ```
 
+## tempo de pausa
+```
+O tempo de pausa (pause time) no Garbage Collector é o período em que a aplicação é completamente interrompida (stopped-the-world) para que o GC possa realizar a limpeza da memória.
+
+1. **O que acontece durante a pausa**:
+- Todas as threads da aplicação são pausadas
+- GC examina e limpa a memória
+- Nenhum novo objeto pode ser alocado
+- Aplicação fica completamente inativa
+
+2. **Tipos de Pausas**:
+- Minor GC (Young Generation)
+  - Pausas mais curtas
+  - Mais frequentes
+  - Geralmente milissegundos
+
+- Full GC (Toda a Heap)
+  - Pausas mais longas
+  - Menos frequentes
+  - Podem durar segundos
+
+3. **Impactos**:
+- Latência da aplicação
+- Responsividade
+- Throughput
+- Experiência do usuário
+
+4. **Exemplo Prático**:
+
+Aplicação rodando -> [PAUSA 200ms para GC] -> Aplicação volta a rodar
+
+
+5. **Fatores que influenciam**:
+- Tamanho da heap
+- Taxa de alocação de objetos
+- Tipo de GC usado
+- Configurações da JVM
+- Carga da aplicação
+
+Por exemplo: Se você configurar um tempo máximo de pausa de 200ms para o G1GC:
+-XX:MaxGCPauseMillis=200
+
+O GC tentará manter as pausas abaixo de 200ms, mas isso não é garantido em todas as situações.
+```
+
 ## Forwarding Pointers 
 ```
 Os Forwarding Pointers são um mecanismo importante usado durante a compactação de memória no GC. Vou explicar em detalhes:
@@ -185,6 +230,10 @@ Benefício de redução de fragmentação
 
 Os forwarding pointers são essenciais para implementar GCs que movem objetos e são uma parte fundamental de coletores modernos como G1 e Shenandoah.
 ```
+## shenandoah
+- desenvolvido pela redhat
+- indicado para reduzir tempos de pausa em heaps grandes
+  
 ## G1
 ```
 G1 (Garbage First) é um coletor de lixo moderno da JVM. Vou explicar seus principais aspectos:
