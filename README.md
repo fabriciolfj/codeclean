@@ -246,6 +246,65 @@ Sistemas com múltiplos cores
 
 O G1 é o GC default desde Java 9 e é uma excelente escolha para muitas aplicações modernas, especialmente aquelas que precisam de pause times previsíveis em heaps grandes.
 ```
+### g1 old
+```
+O G1 Old Generation (G1Old) é parte do G1 Garbage Collector, focando especificamente na gerração Old. Vou explicar seus principais aspectos:
+
+Características Principais:
+
+
+Parte do G1GC (Garbage First)
+Gerencia objetos de vida longa
+Usa regiões de tamanho fixo
+Coleta incremental
+
+
+Funcionamento:
+
+
+Objetos sobreviventes da Young Gen são promovidos
+Usa RSet (Remembered Sets) para rastreamento
+Collection Set (CSet) determina regiões a serem coletadas
+Evacuação de regiões selecionadas
+
+
+Mixed Collections:
+
+
+Coleta tanto regiões Old quanto Young
+Acontece quando Old Gen está muito cheia
+Tenta manter dentro dos objetivos de pausa
+Seleciona regiões com mais espaço livre primeiro
+
+
+Configurações Importantes:
+
+bashCopy-XX:G1MixedGCLiveThresholdPercent=85  # Limite para mixed collections
+-XX:G1HeapWastePercent=5              # Desperdício tolerável
+-XX:G1MixedGCCountTarget=8            # Número alvo de mixed GCs
+
+Situações de Full GC:
+
+
+Quando não consegue recuperar memória rápido o suficiente
+Se a heap ficar muito fragmentada
+Quando marking não termina a tempo
+Em caso de falha na evacuação
+
+
+Otimizações:
+
+
+Coleta regiões com mais garbage primeiro
+Balanceia tempo de pausa vs throughput
+Usa SATB (Snapshot-At-The-Beginning)
+Marking concorrente
+
+O G1Old é crucial para o funcionamento eficiente do G1GC, especialmente em aplicações com grandes heaps e necessidade de baixa latência.
+```
+
+### gc flutuante
+- quando objetos mortos sao mantigos vivos por causa de referência de outros objetos mortos.
 ### g1 coleta mista
 - thread do gc são executadas simultaneamente com as threads do aplicativo.
 - throughput da app e reduzido nesse momento.
