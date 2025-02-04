@@ -1191,6 +1191,7 @@ public Cliente getCliente() {
 - De preferência ao foreach em vez do for tradicional.
 - Use o bigdeciaml para valores monetarios.
 - De preferência a tipos primitivos em vez de empacotados.
+- usar o polimorfismo em vez do instanceof.
 
 ### Arquitetura clean
 - Orientação a objeto: é a habilidade de obter controle absoluto, através do uso do polimorfismo, sobre cada depência de código fonte do sistema.
