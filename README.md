@@ -246,6 +246,108 @@ Sistemas com múltiplos cores
 
 O G1 é o GC default desde Java 9 e é uma excelente escolha para muitas aplicações modernas, especialmente aquelas que precisam de pause times previsíveis em heaps grandes.
 ```
+### g1 coleta mista
+- thread do gc são executadas simultaneamente com as threads do aplicativo.
+- throughput da app e reduzido nesse momento.
+
+### rsets
+```
+O Reset (R-Set ou Remembered Set) é uma estrutura de dados importante usada no gerenciamento de memória da JVM, especialmente relacionada ao Garbage Collection.
+Principais aspectos dos RSets:
+
+Função Principal:
+
+
+Mantém registro de referências entre diferentes gerações de objetos
+Rastreia quais objetos na geração mais velha apontam para objetos na geração mais nova
+Evita a necessidade de varrer toda a heap durante coletas de lixo menores
+
+
+Como Funciona:
+
+
+Divide a heap em "cards" (pequenas regiões de memória)
+Marca cards que contêm referências para objetos em gerações mais novas
+Quando um objeto é atualizado, o card correspondente é marcado como "dirty"
+
+
+Benefícios:
+
+
+Melhora a performance do GC
+Reduz a pausa do GC
+Permite coletas parciais eficientes
+Otimiza o tempo de varredura da memória
+
+
+Uso Prático:
+
+
+Fundamental para GC geracional
+Importante em collectors como G1 e CMS
+Ajuda a manter a eficiência em aplicações com grandes heaps
+
+
+Custo:
+
+
+Consome memória adicional
+Requer processamento para manutenção
+Pequeno overhead durante a execução do programa
+
+O RSet é uma otimização crucial que permite que o Garbage Collector trabalhe de forma mais eficiente, focando apenas nas áreas relevantes da memória em vez de ter que examinar toda a heap.
+```
+
+## ihop
+```
+O iHOP (Inline Hood Optimization Program) é uma técnica de otimização da JVM HotSpot que faz parte do JIT (Just-In-Time) Compiler.
+Principais características:
+
+Funcionamento Básico:
+
+
+Otimiza chamadas de método inline
+Evita overhead de chamadas de método
+Melhora o desempenho do código em tempo de execução
+
+
+Otimizações:
+
+
+Inlining de métodos pequenos
+Eliminação de dispatch virtual
+Redução de overhead de chamadas
+Melhora o cache locality
+
+
+Benefícios:
+
+
+Melhor performance
+Redução do uso de memória
+Menos chamadas de método
+Código mais eficiente
+
+
+Quando é usado:
+
+
+Em métodos chamados frequentemente
+Em métodos pequenos
+Em hot spots da aplicação
+Durante otimizações JIT
+
+
+Limitações:
+
+
+Não funciona com todos os tipos de métodos
+Pode aumentar o tamanho do código
+Tem limites de profundidade de inlining
+Requer análise em tempo de execução
+
+O iHOP é uma das muitas otimizações que a JVM faz automaticamente para melhorar o desempenho das aplicações Java.
+```
 
 ## alocação
 - quantidade de memoria utilizada pelo objeto
