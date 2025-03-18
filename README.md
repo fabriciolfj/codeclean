@@ -2,6 +2,9 @@
 ## Conascência
 - é um conceito introduzido por Meilir Page-Jones que descreve as relações de dependência entre componentes de software. O termo refere-se a quando duas ou mais partes de um sistema são tão interdependentes que uma mudança em uma requer uma mudança coordenada na outra.
 
+## Quantum da arquitetura
+- quantidade de componentes necessários pra uma implantação independente, com alta coesão funcional e conascência sincrona.
+
 # Event sourcing DDD
 ```
 Domain Events:
